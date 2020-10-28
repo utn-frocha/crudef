@@ -115,7 +115,7 @@
             // cboGenero
             // 
             this.cboGenero.FormattingEnabled = true;
-            this.cboGenero.Location = new System.Drawing.Point(543, 113);
+            this.cboGenero.Location = new System.Drawing.Point(543, 133);
             this.cboGenero.Name = "cboGenero";
             this.cboGenero.Size = new System.Drawing.Size(212, 28);
             this.cboGenero.TabIndex = 7;
