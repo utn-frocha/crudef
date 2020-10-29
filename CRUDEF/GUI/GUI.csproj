@@ -44,7 +44,9 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.IdentityModel" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -99,10 +101,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Forms\" />
-    <Folder Include="Icons\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\BLL\BLL.csproj">
       <Project>{db4caf63-1ddf-4b03-8e19-260accb366d3}</Project>
@@ -112,6 +111,17 @@
       <Project>{46ed5d0e-0821-4a64-ba0e-c7d8f631255a}</Project>
       <Name>Entity</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Icons\add-group.png" />
+    <Content Include="Icons\agregar1.png" />
+    <Content Include="Icons\aprendizaje.png" />
+    <Content Include="Icons\Eliminar.png" />
+    <Content Include="Icons\guardar2.png" />
+    <Content Include="Icons\message-24-ok.png" />
+    <Content Include="Icons\OK01.jpg" />
+    <Content Include="Icons\OK2.png" />
+    <Content Include="Icons\OK3.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

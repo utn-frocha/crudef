@@ -29,11 +29,11 @@
         private void InitializeComponent()
         {
             this.splitContainer = new System.Windows.Forms.SplitContainer();
-            this.dgvPersonas = new System.Windows.Forms.DataGridView();
-            this.btnAgregar = new System.Windows.Forms.Button();
-            this.btnEditar = new System.Windows.Forms.Button();
-            this.btnConsultar = new System.Windows.Forms.Button();
             this.cboGenero = new System.Windows.Forms.ComboBox();
+            this.btnConsultar = new System.Windows.Forms.Button();
+            this.btnEditar = new System.Windows.Forms.Button();
+            this.btnAgregar = new System.Windows.Forms.Button();
+            this.dgvPersonas = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer)).BeginInit();
             this.splitContainer.Panel1.SuspendLayout();
             this.splitContainer.Panel2.SuspendLayout();
@@ -62,19 +62,35 @@
             // splitContainer.Panel2
             // 
             this.splitContainer.Panel2.Controls.Add(this.dgvPersonas);
-            this.splitContainer.Size = new System.Drawing.Size(1005, 539);
+            this.splitContainer.Size = new System.Drawing.Size(1022, 625);
             this.splitContainer.SplitterDistance = 81;
             this.splitContainer.TabIndex = 0;
             // 
-            // dgvPersonas
+            // cboGenero
             // 
-            this.dgvPersonas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvPersonas.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvPersonas.Location = new System.Drawing.Point(0, 0);
-            this.dgvPersonas.MultiSelect = false;
-            this.dgvPersonas.Name = "dgvPersonas";
-            this.dgvPersonas.Size = new System.Drawing.Size(1005, 454);
-            this.dgvPersonas.TabIndex = 0;
+            this.cboGenero.FormattingEnabled = true;
+            this.cboGenero.Location = new System.Drawing.Point(566, 38);
+            this.cboGenero.Name = "cboGenero";
+            this.cboGenero.Size = new System.Drawing.Size(203, 26);
+            this.cboGenero.TabIndex = 3;
+            // 
+            // btnConsultar
+            // 
+            this.btnConsultar.Location = new System.Drawing.Point(811, 12);
+            this.btnConsultar.Name = "btnConsultar";
+            this.btnConsultar.Size = new System.Drawing.Size(136, 51);
+            this.btnConsultar.TabIndex = 2;
+            this.btnConsultar.Text = "button1";
+            this.btnConsultar.UseVisualStyleBackColor = true;
+            // 
+            // btnEditar
+            // 
+            this.btnEditar.Location = new System.Drawing.Point(216, 13);
+            this.btnEditar.Name = "btnEditar";
+            this.btnEditar.Size = new System.Drawing.Size(136, 51);
+            this.btnEditar.TabIndex = 1;
+            this.btnEditar.Text = "button1";
+            this.btnEditar.UseVisualStyleBackColor = true;
             // 
             // btnAgregar
             // 
@@ -86,42 +102,26 @@
             this.btnAgregar.UseVisualStyleBackColor = true;
             this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
             // 
-            // btnEditar
+            // dgvPersonas
             // 
-            this.btnEditar.Location = new System.Drawing.Point(216, 13);
-            this.btnEditar.Name = "btnEditar";
-            this.btnEditar.Size = new System.Drawing.Size(136, 51);
-            this.btnEditar.TabIndex = 1;
-            this.btnEditar.Text = "button1";
-            this.btnEditar.UseVisualStyleBackColor = true;
-            // 
-            // btnConsultar
-            // 
-            this.btnConsultar.Location = new System.Drawing.Point(811, 12);
-            this.btnConsultar.Name = "btnConsultar";
-            this.btnConsultar.Size = new System.Drawing.Size(136, 51);
-            this.btnConsultar.TabIndex = 2;
-            this.btnConsultar.Text = "button1";
-            this.btnConsultar.UseVisualStyleBackColor = true;
-            // 
-            // cboGenero
-            // 
-            this.cboGenero.FormattingEnabled = true;
-            this.cboGenero.Location = new System.Drawing.Point(482, 25);
-            this.cboGenero.Name = "cboGenero";
-            this.cboGenero.Size = new System.Drawing.Size(203, 26);
-            this.cboGenero.TabIndex = 3;
+            this.dgvPersonas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvPersonas.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvPersonas.Location = new System.Drawing.Point(0, 0);
+            this.dgvPersonas.MultiSelect = false;
+            this.dgvPersonas.Name = "dgvPersonas";
+            this.dgvPersonas.Size = new System.Drawing.Size(1022, 540);
+            this.dgvPersonas.TabIndex = 0;
             // 
             // frmPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1005, 539);
+            this.ClientSize = new System.Drawing.Size(1022, 625);
             this.ControlBox = false;
             this.Controls.Add(this.splitContainer);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.IsMdiContainer = true;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmPrincipal";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Mantenimiento de Personas";

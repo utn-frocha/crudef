@@ -48,7 +48,6 @@ namespace BLL
                     lst = lst.Where(p => p.Cedula == pcedula);
                 }*/
 
-
                 foreach (var i in lst)
                 {
                     listado.Add(new EPersona(i.Id, i.Codigo, i.Cedula, i.Nombre, i.Apellido1, i.Apellido2, 
@@ -57,9 +56,7 @@ namespace BLL
             }
                 return listado;
             }
-           
         }
-
 
     }
 
