@@ -29,11 +29,13 @@
         private void InitializeComponent()
         {
             this.splitContainer = new System.Windows.Forms.SplitContainer();
+            this.btnCargarCompra = new System.Windows.Forms.Button();
             this.cboGenero = new System.Windows.Forms.ComboBox();
             this.btnConsultar = new System.Windows.Forms.Button();
-            this.btnEditar = new System.Windows.Forms.Button();
+            this.btnEliminar = new System.Windows.Forms.Button();
             this.btnAgregar = new System.Windows.Forms.Button();
             this.dgvPersonas = new System.Windows.Forms.DataGridView();
+            this.btnTelefono = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer)).BeginInit();
             this.splitContainer.Panel1.SuspendLayout();
             this.splitContainer.Panel2.SuspendLayout();
@@ -53,9 +55,11 @@
             // splitContainer.Panel1
             // 
             this.splitContainer.Panel1.BackColor = System.Drawing.SystemColors.HotTrack;
+            this.splitContainer.Panel1.Controls.Add(this.btnTelefono);
+            this.splitContainer.Panel1.Controls.Add(this.btnCargarCompra);
             this.splitContainer.Panel1.Controls.Add(this.cboGenero);
             this.splitContainer.Panel1.Controls.Add(this.btnConsultar);
-            this.splitContainer.Panel1.Controls.Add(this.btnEditar);
+            this.splitContainer.Panel1.Controls.Add(this.btnEliminar);
             this.splitContainer.Panel1.Controls.Add(this.btnAgregar);
             this.splitContainer.Panel1.ImeMode = System.Windows.Forms.ImeMode.Off;
             // 
@@ -66,31 +70,47 @@
             this.splitContainer.SplitterDistance = 81;
             this.splitContainer.TabIndex = 0;
             // 
+            // btnCargarCompra
+            // 
+            this.btnCargarCompra.Location = new System.Drawing.Point(378, 13);
+            this.btnCargarCompra.Name = "btnCargarCompra";
+            this.btnCargarCompra.Size = new System.Drawing.Size(132, 51);
+            this.btnCargarCompra.TabIndex = 4;
+            this.btnCargarCompra.Text = "button1";
+            this.btnCargarCompra.UseVisualStyleBackColor = true;
+            this.btnCargarCompra.Click += new System.EventHandler(this.btnCargarCompra_Click);
+            // 
             // cboGenero
             // 
             this.cboGenero.FormattingEnabled = true;
-            this.cboGenero.Location = new System.Drawing.Point(566, 38);
+            this.cboGenero.Items.AddRange(new object[] {
+            "MASCULINO",
+            "FEMENINO",
+            ""});
+            this.cboGenero.Location = new System.Drawing.Point(516, 38);
             this.cboGenero.Name = "cboGenero";
             this.cboGenero.Size = new System.Drawing.Size(203, 26);
             this.cboGenero.TabIndex = 3;
             // 
             // btnConsultar
             // 
-            this.btnConsultar.Location = new System.Drawing.Point(811, 12);
+            this.btnConsultar.Location = new System.Drawing.Point(725, 13);
             this.btnConsultar.Name = "btnConsultar";
             this.btnConsultar.Size = new System.Drawing.Size(136, 51);
             this.btnConsultar.TabIndex = 2;
-            this.btnConsultar.Text = "button1";
+            this.btnConsultar.Text = "Consultar";
             this.btnConsultar.UseVisualStyleBackColor = true;
+            this.btnConsultar.Click += new System.EventHandler(this.btnConsultar_Click);
             // 
-            // btnEditar
+            // btnEliminar
             // 
-            this.btnEditar.Location = new System.Drawing.Point(216, 13);
-            this.btnEditar.Name = "btnEditar";
-            this.btnEditar.Size = new System.Drawing.Size(136, 51);
-            this.btnEditar.TabIndex = 1;
-            this.btnEditar.Text = "button1";
-            this.btnEditar.UseVisualStyleBackColor = true;
+            this.btnEliminar.Location = new System.Drawing.Point(216, 13);
+            this.btnEliminar.Name = "btnEliminar";
+            this.btnEliminar.Size = new System.Drawing.Size(136, 51);
+            this.btnEliminar.TabIndex = 1;
+            this.btnEliminar.Text = "Eliminar";
+            this.btnEliminar.UseVisualStyleBackColor = true;
+            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
             // 
             // btnAgregar
             // 
@@ -111,6 +131,17 @@
             this.dgvPersonas.Name = "dgvPersonas";
             this.dgvPersonas.Size = new System.Drawing.Size(1022, 540);
             this.dgvPersonas.TabIndex = 0;
+            this.dgvPersonas.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPersonas_CellDoubleClick);
+            // 
+            // btnTelefono
+            // 
+            this.btnTelefono.Location = new System.Drawing.Point(909, 13);
+            this.btnTelefono.Name = "btnTelefono";
+            this.btnTelefono.Size = new System.Drawing.Size(94, 51);
+            this.btnTelefono.TabIndex = 5;
+            this.btnTelefono.Text = "Telefonos";
+            this.btnTelefono.UseVisualStyleBackColor = true;
+            this.btnTelefono.Click += new System.EventHandler(this.btnTelefono_Click);
             // 
             // frmPrincipal
             // 
@@ -140,9 +171,11 @@
         private System.Windows.Forms.SplitContainer splitContainer;
         private System.Windows.Forms.DataGridView dgvPersonas;
         private System.Windows.Forms.Button btnConsultar;
-        private System.Windows.Forms.Button btnEditar;
+        private System.Windows.Forms.Button btnEliminar;
         private System.Windows.Forms.Button btnAgregar;
         private System.Windows.Forms.ComboBox cboGenero;
+        private System.Windows.Forms.Button btnCargarCompra;
+        private System.Windows.Forms.Button btnTelefono;
     }
 }
 

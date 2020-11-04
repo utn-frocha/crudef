@@ -14,6 +14,12 @@ namespace DAL
     
     public partial class PERSONAS
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public PERSONAS()
+        {
+            this.TELEFONOS = new HashSet<TELEFONOS>();
+        }
+    
         public int ID { get; set; }
         public Nullable<int> CODIGO { get; set; }
         public string CEDULA { get; set; }
@@ -23,5 +29,8 @@ namespace DAL
         public Nullable<int> GENERO { get; set; }
         public Nullable<System.DateTime> FECHA_NACIMIENTO { get; set; }
         public string EMAIL { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<TELEFONOS> TELEFONOS { get; set; }
     }
 }

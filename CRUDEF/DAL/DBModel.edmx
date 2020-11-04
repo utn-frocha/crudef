@@ -4,7 +4,17 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="UTNModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="UTNModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="COMPRAS">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IDCLIENTE" Type="int" />
+          <Property Name="IDPRODUCTO" Type="int" />
+          <Property Name="PRECIO" Type="decimal" Precision="25" Scale="2" />
+          <Property Name="DESCUENTO" Type="decimal" Precision="25" Scale="2" />
+        </EntityType>
         <EntityType Name="PERSONAS">
           <Key>
             <PropertyRef Name="ID" />
@@ -19,11 +29,38 @@
           <Property Name="FECHA_NACIMIENTO" Type="date" />
           <Property Name="EMAIL" Type="nvarchar" MaxLength="50" />
         </EntityType>
+        <EntityType Name="TELEFONOS">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IDCLIENTE" Type="int" />
+          <Property Name="TELEFONO" Type="nvarchar" MaxLength="30" />
+          <Property Name="ESTADO" Type="int" />
+        </EntityType>
+        <Association Name="FKPERSONA">
+          <End Role="PERSONAS" Type="Self.PERSONAS" Multiplicity="0..1" />
+          <End Role="TELEFONOS" Type="Self.TELEFONOS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PERSONAS">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TELEFONOS">
+              <PropertyRef Name="IDCLIENTE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="PA_COMPRAS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <EntityContainer Name="UTNModelStoreContainer">
+          <EntitySet Name="COMPRAS" EntityType="Self.COMPRAS" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PERSONAS" EntityType="Self.PERSONAS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TELEFONOS" EntityType="Self.TELEFONOS" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FKPERSONA" Association="Self.FKPERSONA">
+            <End Role="PERSONAS" EntitySet="PERSONAS" />
+            <End Role="TELEFONOS" EntitySet="TELEFONOS" />
+          </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="UTNModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -40,10 +77,45 @@
           <Property Name="GENERO" Type="Int32" />
           <Property Name="FECHA_NACIMIENTO" Type="DateTime" Precision="0" />
           <Property Name="EMAIL" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="TELEFONOS" Relationship="UTNModel.FKPERSONA" FromRole="PERSONAS" ToRole="TELEFONOS" />
         </EntityType>
         <EntityContainer Name="UTNEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="PERSONAS" EntityType="Self.PERSONAS" />
+          <FunctionImport Name="PA_COMPRAS" ReturnType="Collection(UTNModel.PA_COMPRAS_Result)" />
+          <EntitySet Name="TELEFONOS" EntityType="UTNModel.TELEFONOS" />
+          <AssociationSet Name="FKPERSONA" Association="UTNModel.FKPERSONA">
+            <End Role="PERSONAS" EntitySet="PERSONAS" />
+            <End Role="TELEFONOS" EntitySet="TELEFONOS" />
+          </AssociationSet>
         </EntityContainer>
+        <ComplexType Name="PA_COMPRAS_Result">
+          <Property Type="String" Name="NOMBRE" Nullable="true" MaxLength="92" />
+          <Property Type="String" Name="PRODUCTO" Nullable="true" MaxLength="50" />
+          <Property Type="Decimal" Name="PRECIO" Nullable="true" Precision="25" Scale="2" />
+          <Property Type="Decimal" Name="DESCUENTO" Nullable="true" Precision="25" Scale="2" />
+        </ComplexType>
+        <EntityType Name="TELEFONOS">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IDCLIENTE" Type="Int32" />
+          <Property Name="TELEFONO" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="ESTADO" Type="Int32" />
+          <NavigationProperty Name="PERSONAS" Relationship="UTNModel.FKPERSONA" FromRole="TELEFONOS" ToRole="PERSONAS" />
+        </EntityType>
+        <Association Name="FKPERSONA">
+          <End Type="UTNModel.PERSONAS" Role="PERSONAS" Multiplicity="0..1" />
+          <End Type="UTNModel.TELEFONOS" Role="TELEFONOS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PERSONAS">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TELEFONOS">
+              <PropertyRef Name="IDCLIENTE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -62,6 +134,26 @@
                 <ScalarProperty Name="GENERO" ColumnName="GENERO" />
                 <ScalarProperty Name="FECHA_NACIMIENTO" ColumnName="FECHA_NACIMIENTO" />
                 <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="PA_COMPRAS" FunctionName="UTNModel.Store.PA_COMPRAS">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="UTNModel.PA_COMPRAS_Result">
+                <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+                <ScalarProperty Name="PRODUCTO" ColumnName="PRODUCTO" />
+                <ScalarProperty Name="PRECIO" ColumnName="PRECIO" />
+                <ScalarProperty Name="DESCUENTO" ColumnName="DESCUENTO" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <EntitySetMapping Name="TELEFONOS">
+            <EntityTypeMapping TypeName="UTNModel.TELEFONOS">
+              <MappingFragment StoreEntitySet="TELEFONOS">
+                <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
+                <ScalarProperty Name="TELEFONO" ColumnName="TELEFONO" />
+                <ScalarProperty Name="IDCLIENTE" ColumnName="IDCLIENTE" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

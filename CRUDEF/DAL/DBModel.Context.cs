@@ -12,6 +12,8 @@ namespace DAL
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
+    using System.Data.Entity.Core.Objects;
+    using System.Linq;
     
     public partial class UTNEntities : DbContext
     {
@@ -26,5 +28,11 @@ namespace DAL
         }
     
         public virtual DbSet<PERSONAS> PERSONAS { get; set; }
+        public virtual DbSet<TELEFONOS> TELEFONOS { get; set; }
+    
+        public virtual ObjectResult<PA_COMPRAS_Result> PA_COMPRAS()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<PA_COMPRAS_Result>("PA_COMPRAS");
+        }
     }
 }
